@@ -333,7 +333,7 @@ def addition():
                         rand += choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=_+()!@#$%^&*;:.|')
                     final = encoded + '$$$$' + rand
                     ex_values = [ROT_encode(BASE_encode(user)), final, date.now().month, date.now().day]
-                    cur.execute('INSERT INTO ' + tables[int(option)] + ' VALUES(?, ?, ?)',ex_values)
+                    cur.execute('INSERT INTO ' + tables[int(option)] + ' VALUES(?, ?, ?, ?)',ex_values)
                     conn.commit()
                     conn.close()
 
@@ -456,7 +456,6 @@ def drop():
 
     elif os_db() == 'linux':
         conn = sqlite3.connect(os.getenv('HOME') + '/Documents/db.db')
-        conn = sqlite3.connect(os.getenv('HOME') + '\\db.db')
         cur = conn.cursor()
         tables = []
         num_range = ''
