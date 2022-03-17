@@ -404,32 +404,44 @@ def view():
 
 def service():
     if os_db() == 'nt':
+        draft = []
         conn = sqlite3.connect(os.getenv('HOME') + '\\db.db')
         cur = conn.cursor()
         print('These are the available services\n')
         for i in cur.execute("SELECT name FROM sqlite_master WHERE type='table';"):
+            draft += [i[0]]
             print(i[0])
 
         ser = input('Enter the name of service: ')
-        cur.execute('CREATE TABLE ' + ser.upper() + '(user text, password text, month integer, day integer)')
-        cur.execute('INSERT INTO ' + ser.upper() + ' VALUES("null", "null", 0, 0)')
-        print('Service ' + ser.upper() + ' added!\n')
-        conn.commit()
-        conn.close()
+        while ser in draft:
+            print("The service already exists...")
+            ser = input('Enter the name of service: ')
+        else:
+            cur.execute('CREATE TABLE ' + ser.upper() + '(user text, password text, month integer, day integer)')
+            cur.execute('INSERT INTO ' + ser.upper() + ' VALUES("null", "null", 0, 0)')
+            print('Service ' + ser.upper() + ' added!\n')
+            conn.commit()
+            conn.close()
 
     elif os_db() == 'linux':
+        draft = []
         conn = sqlite3.connect(os.getenv('HOME') + '/Documents/db.db')
         cur = conn.cursor()
         print('These are the available services\n')
         for i in cur.execute("SELECT name FROM sqlite_master WHERE type='table';"):
+            draft += [i[0]]
             print(i[0])
 
         ser = input('Enter the name of service: ')
-        cur.execute('CREATE TABLE ' + ser.upper() + '(user text, password text, month integer, day integer)')
-        cur.execute('INSERT INTO ' + ser.upper() + ' VALUES("null", "null", 0, 0)')
-        print('Service ' + ser.upper() + ' added!\n')
-        conn.commit()
-        conn.close()
+        while ser in draft:
+            print("The service already exits...")
+            ser = input('Enter the name of service: ')
+        else:
+            cur.execute('CREATE TABLE ' + ser.upper() + '(user text, password text, month integer, day integer)')
+            cur.execute('INSERT INTO ' + ser.upper() + ' VALUES("null", "null", 0, 0)')
+            print('Service ' + ser.upper() + ' added!\n')
+            conn.commit()
+            conn.close()
 
 def drop():
     if os_db() == 'nt':
