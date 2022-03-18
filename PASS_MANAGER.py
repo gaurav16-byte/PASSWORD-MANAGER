@@ -413,7 +413,7 @@ def service():
             print(i[0])
 
         ser = input('Enter the name of service: ')
-        while ser in draft:
+        while ser.upper() in draft:
             print("The service already exists...")
             ser = input('Enter the name of service: ')
         else:
@@ -433,7 +433,7 @@ def service():
             print(i[0])
 
         ser = input('Enter the name of service: ')
-        while ser in draft:
+        while ser.upper() in draft:
             print("The service already exits...")
             ser = input('Enter the name of service: ')
         else:
