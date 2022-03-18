@@ -5,4 +5,6 @@
 
 **WORKS TOTALLY OFFLINE**
 
+**KeePass is beautified version for linux**
+
 **COPYING SOMEONE ELSE'S CODE JUST MAKES YOU A SCRIPT-KIDDIE.**
